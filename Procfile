@@ -1,1 +1,2 @@
-web: node graphql.js
+web: node server.js
+
