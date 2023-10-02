@@ -9,7 +9,7 @@
 //   console.log(`Server ready at ${url}`);
 // });
 
-const { ApolloServer } = require('apollo-server');
+const { ApolloServer } = require('apollo-server-express'); // Use apollo-server-express
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
 const express = require('express');
@@ -28,6 +28,7 @@ app.use(cors(corsOptions));
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
+// Apply the Apollo Server middleware to your Express app
 server.applyMiddleware({ app });
 
 app.listen({ port: process.env.PORT || 4000 }, () => {
