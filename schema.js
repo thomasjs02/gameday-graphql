@@ -2,13 +2,14 @@
 const { gql } = require('apollo-server');
 
 const typeDefs = gql`
-  type Book {
+  type Thomas {
+    icon: String
     title: String
-    author: String
+    description: String
   }
 
   type Query {
-    books: [Book]
+    thomas: [Thomas]
   }
 `;
 module.exports = typeDefs;

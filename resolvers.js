@@ -1,9 +1,9 @@
 // resolvers.js
-const { books } = require('./data');
+const { thomas } = require('./data');
 
 const resolvers = {
   Query: {
-    books: () => books,
+    thomas: () => thomas,
   },
 };
 
