@@ -28,9 +28,14 @@ app.use(cors(corsOptions));
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
-// Apply the Apollo Server middleware to your Express app
-server.applyMiddleware({ app });
+// Await server.start() before applying middleware
+async function startServer() {
+  await server.start();
+  server.applyMiddleware({ app });
+}
 
-app.listen({ port: process.env.PORT || 4000 }, () => {
-  console.log(`Server ready at http://localhost:4000${server.graphqlPath}`);
+startServer().then(() => {
+  app.listen({ port: process.env.PORT || 4000 }, () => {
+    console.log(`Server ready at http://localhost:4000${server.graphqlPath}`);
+  });
 });
